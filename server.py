@@ -29,8 +29,8 @@ def generate_alphanum_random_string(length: int) -> str:
 
 def get_data(addr: tuple) -> str:
     insert_data(addr[0], generate_alphanum_random_string(10))
-    user = cursor.execute(f'SELECT number FROM user WHERE address = "{addr[0]}"')
-    data = [x for x in user]
+    user = cursor.execute(f'SELECT * FROM user WHERE address = "{addr[0]}"')
+    data = [x[1] for x in user]
     request = f"\r\nHTTP/1.1 200 OK\r\nContent-Type: application/json\r\nConnection-Length: {len(str(data))}\r\nConnection: close"
     text = f'{request}\r\n\r\n{data}'
     return text
