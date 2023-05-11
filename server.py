@@ -76,8 +76,8 @@ def start_server():
 
         else:
             gen_num = generate_alphanum_random_string(10)
-            request = f"\r\nHTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {len(gen_num)}\r\nConnection: close"
-            text = f'{request}\r\n\r\n["{gen_num}"]'
+            request = f"\r\nHTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {len(str([gen_num]))}\r\nConnection: close"
+            text = f'{request}\r\n\r\n{[gen_num]}'
             insert_data(addr[0], gen_num)
 
             res = json.dumps(text)
@@ -86,7 +86,6 @@ def start_server():
             conn.close()
 
             print('Waiting for request!')
-       
 
 
 if __name__ == '__main__':
