@@ -86,9 +86,7 @@ def start_server():
             conn.close()
 
             print('Waiting for request!')
-
-        # # close connection
-        conn.close()
+       
 
 
 if __name__ == '__main__':
