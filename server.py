@@ -67,7 +67,7 @@ def start_server():
         user = cursor.execute(f'SELECT * FROM user WHERE address = "{addr[0]}"')
         if user.fetchone():
             choice = random.choice([15, 30, 60])
-            timer = time.sleep(choice)
+            time.sleep(choice)
             data = get_data(addr)
             res = json.dumps(data)
             conn.send(res.encode('UTF-8'))
